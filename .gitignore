@@ -11,6 +11,7 @@
 .springBeans
 .sts4-cache
 .metadata
+.recommenders
 /Servers/
 /logs/*
 
