@@ -29,7 +29,11 @@ public class PasswordResetToken {
 	private User user;
 
 	private Date expiryDate;
-
+	
+	// It is always better to add a default no arg constructor when you 
+	// have defined a constructor that accepts arguments. This is to fix the weird unexplained behavior
+	public PasswordResetToken() {	}
+	
 	public PasswordResetToken(final String token, final User user) {
 		this.token = token;
 		this.user = user;
