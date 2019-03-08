@@ -138,7 +138,8 @@ public class HomeController {
 												userDetails, userDetails.getPassword(),	userDetails.getAuthorities());
 		
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-
+		// myProfile template expects a user attribute
+		model.addAttribute("user", user);
 		model.addAttribute("classActiveEdit", true);
 		return "myProfile";
 	}
