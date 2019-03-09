@@ -27,3 +27,4 @@
 /nbdist/
 /.nb-gradle/
 /build/
+.recommenders/
