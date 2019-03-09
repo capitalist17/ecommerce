@@ -1,6 +1,8 @@
 
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:fragment="common-header">
 
@@ -52,8 +54,9 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#">SHOPPING CART</a></li>
-						<li><a href="#">MY ACCOUNT</a></li>
-						<li><a href="#">LOGOUT</a></li>
+						<li><a sec:authorize="isAnonymous()" th:href="@{/login}">LOGIN</a></li>
+						<li><a sec:authorize="isAuthenticated()" th:href="@{/myProfile}">MY ACCOUNT</a></li>
+						<li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">LOGOUT</a></li>
 					</ul>
 				</div>
 			</div>
