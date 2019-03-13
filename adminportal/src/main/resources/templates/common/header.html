@@ -13,12 +13,14 @@
 <title>Bookstore</title>
 
 <!-- Bootstrap core CSS -->
-<link href="./css/bootstrap.min.css" rel="stylesheet" />
+<!-- In adminportal app, we are using context path. So a normal path would'nt work as expected. 
+so instead of href="./css/bootstrap.min.css" we should be using th:href="@{./css/bootstrap.min.css}" -->
+<link th:href="@{./css/bootstrap.min.css}" rel="stylesheet" />
 
-<link href="./css/non-responsive.css" rel="stylesheet" />
+<link href="@{./css/non-responsive.css}" rel="stylesheet" />
 <!-- Custom styles for this template -->
-<link href="./css/style.css" rel="stylesheet" />
-<link rel="icon" href="/image/apple-touch-icon.png" />
+<link href="@{./css/style.css}" rel="stylesheet" />
+<link rel="icon" th:href="@{/image/apple-touch-icon.png}" />
 
 </head>
 
@@ -51,16 +53,14 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#">Sign out</a></li>
 					</ul>
-				</div>
-				<!-- /.navbar-collapse -->
-			</div>
-			<!-- /.container-fluid -->
+				</div> <!-- /.navbar-collapse -->				
+			</div> <!-- /.container-fluid -->			
 		</nav>		
 	</div>
 
 	<div th:fragment="body-bottom-scripts">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
+		<script th:src="@{./js/bootstrap.min.js}"></script>
 	</div>
 
 </body>
