@@ -1,0 +1,6 @@
+INSERT INTO bookstoredb.role(role_id,name) VALUES(0,'ROLE_ADMIN');
+
+INSERT INTO bookstoredb.user (email,enabled,first_name,last_name,password,username)
+VALUES('admin@bookstore.com',1,'admin','admin','$2a$12$LtbYtEzOBdnsiD/E9Wtj2OBraPpyj1rqIbnV481hUPJz5DOk4b8Aa','admin');
+
+INSERT INTO bookstoredb.user_role (role_id,user_id) VALUES (0,3);
