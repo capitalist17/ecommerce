@@ -15,10 +15,10 @@
 <!-- Bootstrap core CSS -->
 <!-- In adminportal app, we are using context path. So a normal path would'nt work as expected. 
 so instead of href="./css/bootstrap.min.css" we should be using th:href="@{./css/bootstrap.min.css}" -->
-<link th:href="@{./css/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
 
 <!-- Custom styles for this template -->
-<link href="@{./css/style.css}" rel="stylesheet" />
+<link href="@{/css/style.css}" rel="stylesheet" />
 <link rel="icon" th:href="@{/image/apple-touch-icon.png}" />
 
 </head>
@@ -145,7 +145,7 @@ so instead of href="./css/bootstrap.min.css" we should be using th:href="@{./css
 
 	<div th:fragment="body-bottom-scripts">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<script th:src="@{./js/bootstrap.min.js}"></script>
+		<script th:src="@{/js/bootstrap.min.js}"></script>
 	</div>
 
 </body>
