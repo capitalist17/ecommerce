@@ -104,7 +104,6 @@ public class HomeController {
 		model.addAttribute("forgotPasswordEmailSent", "true");			
 		return "myAccount";
 	}
-
 	
 	@RequestMapping(value="/newUser", method=RequestMethod.POST)
 	public String newUserPost(
@@ -180,6 +179,17 @@ public class HomeController {
 		// myProfile template expects a user attribute
 		model.addAttribute("user", user);
 		model.addAttribute("classActiveEdit", true);
+		return "myProfile";
+	}
+	
+	@RequestMapping("/myProfile")
+	public String getMyProfile(Locale locale, Model model, Principal principal) {
+		if(principal != null) {
+			String username = principal.getName();
+			User user = userService.findByUsername(username);
+			model.addAttribute("user", user);
+		}
+		model.addAttribute("classActiveEdit", false);
 		return "myProfile";
 	}
 	
