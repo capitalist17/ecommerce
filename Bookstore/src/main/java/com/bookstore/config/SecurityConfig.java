@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			"/newUser",
 			"/login",
 			"/bookshelf",
-			"/bookDetail"
+			"/bookDetail/**"
 	};
 	
 	@Override
