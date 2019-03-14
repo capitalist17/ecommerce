@@ -12,7 +12,9 @@
 					<legend class="center-block">
 						Update Book Information<span style="font-size: small"> * is a required field</span>
 					</legend>
-
+					
+					<input hidden="hidden" name="id" th:value="${book.id}" />
+					
 					<!-- title -->
 					<div class="form-group">
 						<label class="col-md-2 control-label" for="title">* Title</label>
