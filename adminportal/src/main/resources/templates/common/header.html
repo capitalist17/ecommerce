@@ -21,6 +21,10 @@ so instead of href="./css/bootstrap.min.css" we should be using th:href="@{./css
 <link href="@{/css/style.css}" rel="stylesheet" />
 <link rel="icon" th:href="@{/image/apple-touch-icon.png}" />
 
+<!-- TinyMCE for editing rich text inside of textarea input fields -->
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script>tinymce.init({ selector:'textarea' });</script>
+
 </head>
 
 <body>
