@@ -51,7 +51,7 @@
 						<label class="col-md-2 control-label" for="publicationDate">Publication Date</label>
 						<div class="col-md-8">
 							<input type="date" class="form-control" id="publicationDate" name="publicationDate" 
-								th:value="${book.publicationDate}" placeholder="ublication Date" /> 
+								th:value="${book.publicationDate}" placeholder="Publication Date" /> 
 							<span class="help-block">Publication Date of the book</span>
 						</div>
 					</div>
@@ -122,7 +122,7 @@
 						<label class="col-md-2 control-label" for="shippingWeight">Shipping Weight</label>
 						<div class="col-md-8">
 							<div class="input-group">
-								<input th:value="${book.shippingWeight}" type="number" name="shippingWeight" 
+								<input th:value="${book.shippingWeight}" type="number" name="shippingWeight" step="0.01"
 									class="form-control" id="shippingWeight" placeholder="Shipping Weight" /> 
 								<span class="input-group-addon">Ounces</span>
 							</div>
@@ -136,7 +136,7 @@
 						<div class="col-md-8">
 							<div class="input-group">
 								<span class="input-group-addon">$</span> 
-								<input th:value="${book.listPrice}" type="number" name="listPrice"
+								<input th:value="${book.listPrice}" type="number" name="listPrice" step="0.01"								
 									class="form-control" id="listPrice" placeholder="List Price" />
 							</div>
 							<span class="help-block">List price of the book</span>
@@ -149,7 +149,7 @@
 						<div class="col-md-8">
 							<div class="input-group">
 								<span class="input-group-addon">$</span> 
-								<input th:value="${book.ourPrice}" type="number" name="ourPrice"
+								<input th:value="${book.ourPrice}" type="number" name="ourPrice" step="0.01"
 									class="form-control" id="ourPrice" placeholder="Our Price" />
 							</div>
 							<span class="help-block">Our price of the book</span>
