@@ -183,13 +183,13 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/myProfile")
-	public String getMyProfile(Locale locale, Model model, Principal principal) {
+	public String getMyProfile(Model model, Principal principal) {
 		if(principal != null) {
 			String username = principal.getName();
 			User user = userService.findByUsername(username);
 			model.addAttribute("user", user);
 		}
-		model.addAttribute("classActiveEdit", false);
+		model.addAttribute("classActiveEdit", true);
 		return "myProfile";
 	}
 	
