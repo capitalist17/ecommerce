@@ -188,7 +188,11 @@ public class HomeController {
 			String username = principal.getName();
 			User user = userService.findByUsername(username);
 			model.addAttribute("user", user);
+			model.addAttribute("userPaymentList", user.getUserPaymentList());
 		}
+		
+		model.addAttribute("listOfCreditCards", true);
+
 		model.addAttribute("classActiveEdit", true);
 		return "myProfile";
 	}
