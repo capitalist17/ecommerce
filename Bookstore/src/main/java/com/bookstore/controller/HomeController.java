@@ -2,6 +2,7 @@ package com.bookstore.controller;
 
 import java.security.Principal;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -28,6 +29,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bookstore.domain.Book;
 import com.bookstore.domain.User;
+import com.bookstore.domain.UserBilling;
+import com.bookstore.domain.UserPayment;
 import com.bookstore.domain.security.PasswordResetToken;
 import com.bookstore.domain.security.Role;
 import com.bookstore.domain.security.UserRole;
@@ -36,6 +39,7 @@ import com.bookstore.service.UserDetailsServiceImpl;
 import com.bookstore.service.UserService;
 import com.bookstore.utility.MailConstructor;
 import com.bookstore.utility.SecurityUtility;
+import com.bookstore.utility.USConstants;
 
 @Controller
 public class HomeController {
@@ -192,11 +196,44 @@ public class HomeController {
 		}
 		
 		model.addAttribute("listOfCreditCards", true);
-
 		model.addAttribute("classActiveEdit", true);
+		
 		return "myProfile";
 	}
 	
+	@RequestMapping("/listOfCreditCards")
+	public String listOfCreditCards( Model model, Principal principal ) {
+		User user = userService.findByUsername(principal.getName());
+		model.addAttribute("user", user);
+		
+		
+		model.addAttribute("listOfCreditCards", true);
+		model.addAttribute("classActiveBilling", true);
+		
+		return "myProfile";
+	}
+	
+	@RequestMapping("/addNewCreditCard")
+	public String addNewCreditCard( Model model, Principal principal ){
+		User user = userService.findByUsername(principal.getName());
+		model.addAttribute("user", user);
+		
+		model.addAttribute("addNewCreditCard", true);
+		model.addAttribute("classActiveBilling", true);
+		
+		UserBilling userBilling = new UserBilling();
+		UserPayment userPayment = new UserPayment();
+				
+		model.addAttribute("userBilling", userBilling);
+		model.addAttribute("userPayment", userPayment);
+		
+		List<String> stateList = USConstants.listOfUSStatesCode;
+		Collections.sort(stateList);
+		model.addAttribute("stateList", stateList);
+
+		return "myProfile";
+	}
+
 	@RequestMapping(value="/updateUserInfo", method=RequestMethod.POST)
 	public String updateUserInfo(
 				@ModelAttribute("user") User user,
