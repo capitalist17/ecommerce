@@ -330,6 +330,7 @@ public class HomeController {
 	public String listOfShippingAddresses( Model model, Principal principal) {
 		User user = userService.findByUsername(principal.getName());
 		model.addAttribute("user", user);
+		model.addAttribute("userShippingList", user.getUserShippingList());
 
 		model.addAttribute("classActiveShipping", true);
 		model.addAttribute("listOfShippingAddresses", true);
@@ -355,6 +356,22 @@ public class HomeController {
 		return "myProfile";
 	}
 	
+	@RequestMapping(value="/addNewShippingAddress", method=RequestMethod.POST)
+	public String addNewShippingAddressPost(
+			@ModelAttribute("userShipping") UserShipping userShipping,
+			Principal principal, Model model
+			){
+		User user = userService.findByUsername(principal.getName());
+		userService.updateUserShipping(userShipping, user);
+		
+		model.addAttribute("user", user);
+		model.addAttribute("userShippingList", user.getUserShippingList());
+		
+		model.addAttribute("listOfShippingAddresses", true);
+		model.addAttribute("classActiveShipping", true);
+		
+		return "myProfile";
+	}
 	
 	@RequestMapping(value="/updateUserInfo", method=RequestMethod.POST)
 	public String updateUserInfo(
