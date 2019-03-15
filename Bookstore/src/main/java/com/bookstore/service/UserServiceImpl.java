@@ -1,8 +1,7 @@
 package com.bookstore.service;
 
+import java.util.List;
 import java.util.Set;
-
-import javax.persistence.CascadeType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +13,7 @@ import com.bookstore.domain.security.PasswordResetToken;
 import com.bookstore.domain.security.UserRole;
 import com.bookstore.repository.PasswordResetTokenRepository;
 import com.bookstore.repository.RoleRepository;
+import com.bookstore.repository.UserPaymentRepository;
 import com.bookstore.repository.UserRepository;
 
 @Service
@@ -27,6 +27,9 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private PasswordResetTokenRepository passwordResetTokenRepository;
 	
+	@Autowired
+	private UserPaymentRepository userPaymentRepository;
+
 	@Override
 	public PasswordResetToken getPasswordResetToken(final String token) {
 		return passwordResetTokenRepository.findByToken(token);
@@ -89,6 +92,21 @@ public class UserServiceImpl implements UserService{
 		user.getUserPaymentList().add(userPayment);
 		// the save triggers the save of UserPayment and UserBilling as well as cascade = CascadeType.ALL
 		userRepository.save(user); 
+	}
+
+	@Override
+	public void setUserDefaultPayment(Long defaultPaymentId, User user) {
+		List<UserPayment> userPaymentList = user.getUserPaymentList();
+		
+		for (UserPayment userPayment : userPaymentList) {
+			if (userPayment.getId() == defaultPaymentId) {
+				userPayment.setDefaultPayment(true);
+				userPaymentRepository.save(userPayment);
+			} else {
+				userPayment.setDefaultPayment(false);
+				userPaymentRepository.save(userPayment);
+			}
+		}
 	}
 	
 }

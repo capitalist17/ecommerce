@@ -309,6 +309,22 @@ public class HomeController {
 			return "myProfile";
 		}
 	}
+	
+	@RequestMapping(value="/setDefaultPayment", method=RequestMethod.POST)
+	public String setDefaultPayment(
+			@ModelAttribute("defaultUserPaymentId") Long defaultPaymentId, Principal principal, Model model
+			) {
+		User user = userService.findByUsername(principal.getName());
+		userService.setUserDefaultPayment(defaultPaymentId, user);
+		
+		model.addAttribute("user", user);
+		model.addAttribute("listOfCreditCards", true);
+		model.addAttribute("classActiveBilling", true);
+				
+		model.addAttribute("userPaymentList", user.getUserPaymentList());
+				
+		return "myProfile";
+	}
 
 	@RequestMapping("/listOfShippingAddresses")
 	public String listOfShippingAddresses( Model model, Principal principal) {
@@ -338,7 +354,8 @@ public class HomeController {
 				
 		return "myProfile";
 	}
-
+	
+	
 	@RequestMapping(value="/updateUserInfo", method=RequestMethod.POST)
 	public String updateUserInfo(
 				@ModelAttribute("user") User user,
