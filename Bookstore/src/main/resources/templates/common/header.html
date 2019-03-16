@@ -13,14 +13,14 @@
 <title>Bookstore</title>
 
 <!-- Bootstrap core CSS -->
-<link href="./css/bootstrap.min.css" rel="stylesheet" />
+<link href="/css/bootstrap.min.css" rel="stylesheet" />
 
-<link href="./css/non-responsive.css" rel="stylesheet" />
+<link href="/css/non-responsive.css" rel="stylesheet" />
 
 <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" />
 
 <!-- Custom styles for this template -->
-<link href="./css/style.css" rel="stylesheet" />
+<link href="/css/style.css" rel="stylesheet" />
 <link rel="icon" href="/image/apple-touch-icon.png" />
 
 </head>
@@ -56,7 +56,7 @@
 						</form>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">SHOPPING CART</a></li>
+						<li><a th:href="@{/shoppingCart/cart}">SHOPPING CART</a></li>
 						<li><a sec:authorize="isAnonymous()" th:href="@{/login}">LOGIN</a></li>
 						<li><a sec:authorize="isAuthenticated()" th:href="@{/myProfile}">MY ACCOUNT</a></li>
 						<li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">LOGOUT</a></li>
