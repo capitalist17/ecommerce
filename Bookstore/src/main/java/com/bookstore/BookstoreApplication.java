@@ -29,11 +29,11 @@ public class BookstoreApplication implements CommandLineRunner{
 			// Every time the app starts it will try to create this hardcoded user. The first time it succeeds.
 			// Subsequently it fails and the app wont start. So this try catch to absorb the exception silently
 			User user1 = new User();
-			user1.setFirstName("John");
-			user1.setLastName("Doe");
-			user1.setUsername("john");
+			user1.setFirstName("Arvind");
+			user1.setLastName("SN");
+			user1.setUsername("asn");
 			user1.setPassword(SecurityUtility.passwordEncoder().encode("pass"));
-			user1.setEmail("Jdoe@gmail.com");
+			user1.setEmail("asnspring@gmail.com");
 			Set<UserRole> userRoles = new HashSet<>();
 			Role role1= new Role();
 			role1.setRoleId(1);
@@ -41,6 +41,20 @@ public class BookstoreApplication implements CommandLineRunner{
 			userRoles.add(new UserRole(user1, role1));
 			
 			userService.createUser(user1, userRoles);
+			
+			User user2 = new User();
+			user2.setFirstName("Arvind");
+			user2.setLastName("SN");
+			user2.setUsername("admin");
+			user2.setPassword(SecurityUtility.passwordEncoder().encode("admin"));
+			user2.setEmail("admin@bs.com");		
+			Set<UserRole> userRoles1 = new HashSet<>();
+			Role role2= new Role();
+			role2.setRoleId(0);
+			role2.setName("ROLE_ADMIN");
+			userRoles1.add(new UserRole(user2, role2));
+			
+			userService.createUser(user2, userRoles1);
 		} catch (Exception e) {
 			System.out.println("The user is already present : " + e);
 		}
