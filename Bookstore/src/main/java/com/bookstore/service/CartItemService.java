@@ -13,4 +13,9 @@ public interface CartItemService {
 	CartItem updateCartItem(CartItem cartItem);
 
 	CartItem addBookToCartItem(Book book, User user, int qty);
+
+	CartItem findById(Long id);
+
+	void removeCartItem(CartItem cartItem);
+
 }

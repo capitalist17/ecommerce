@@ -43,7 +43,7 @@ public class CartItemServiceImpl implements CartItemService {
 
 	@Override
 	public CartItem addBookToCartItem(Book book, User user, int qty) {
-List<CartItem> cartItemList = findByShoppingCart(user.getShoppingCart());
+		List<CartItem> cartItemList = findByShoppingCart(user.getShoppingCart());
 		
 		for (CartItem cartItem : cartItemList) {
 			if(book.getId() == cartItem.getBook().getId()) {
@@ -69,6 +69,16 @@ List<CartItem> cartItemList = findByShoppingCart(user.getShoppingCart());
 		
 		return cartItem;
 
+	}
+
+	@Override
+	public CartItem findById(Long id) {
+		return cartItemRepository.findById(id).get();
+	}
+	
+	public void removeCartItem(CartItem cartItem) {
+		bookToCartItemRepository.deleteByCartItem(cartItem);
+		cartItemRepository.delete(cartItem);
 	}
 
 }
