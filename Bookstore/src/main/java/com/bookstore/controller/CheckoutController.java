@@ -274,7 +274,7 @@ public class CheckoutController {
 			billingAddress.setBillingAddressState(shippingAddress.getShippingAddressState());
 			billingAddress.setBillingAddressCountry(shippingAddress.getShippingAddressCountry());
 			billingAddress.setBillingAddressZipcode(shippingAddress.getShippingAddressZipcode());
-		}
+		} 
 
 		if (shippingAddress.getShippingAddressStreet1().isEmpty() || shippingAddress.getShippingAddressCity().isEmpty()
 				|| shippingAddress.getShippingAddressState().isEmpty()
@@ -284,7 +284,7 @@ public class CheckoutController {
 				|| billingAddress.getBillingAddressCity().isEmpty() || billingAddress.getBillingAddressState().isEmpty()
 				|| billingAddress.getBillingAddressName().isEmpty()
 				|| billingAddress.getBillingAddressZipcode().isEmpty())
-			return "redirect:/checkout?id=" + shoppingCart.getId() + "&missingRequiredField=true";
+			return "redirect:/checkout?id=" + shoppingCart.getId() + "&missingRequiredField=true"; 
 		
 		User user = userService.findByUsername(principal.getName());
 		
