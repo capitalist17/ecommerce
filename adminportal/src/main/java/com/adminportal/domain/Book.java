@@ -12,7 +12,6 @@ import javax.persistence.Transient;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.adminportal.domain.BookToCartItem;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -181,7 +180,7 @@ public class Book {
 	public void setBookImage(MultipartFile bookImage) {
 		this.bookImage = bookImage;
 	}
-	
+
 	public List<BookToCartItem> getBookToCartItemList() {
 		return bookToCartItemList;
 	}
@@ -189,4 +188,6 @@ public class Book {
 	public void setBookToCartItemList(List<BookToCartItem> bookToCartItemList) {
 		this.bookToCartItemList = bookToCartItemList;
 	}
+	
+	
 }
