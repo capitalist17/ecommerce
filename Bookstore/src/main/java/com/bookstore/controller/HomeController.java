@@ -217,6 +217,7 @@ public class HomeController {
 		}
 		
 		model.addAttribute("listOfCreditCards", true);
+		model.addAttribute("listOfShippingAddresses", true);
 		model.addAttribute("classActiveEdit", true);
 		
 		return "myProfile";
@@ -230,6 +231,7 @@ public class HomeController {
 		model.addAttribute("userShippingList", user.getUserShippingList());
 		model.addAttribute("orderList", user.getOrderList());
 		model.addAttribute("listOfCreditCards", true);
+		model.addAttribute("listOfShippingAddresses", true);
 		model.addAttribute("classActiveBilling", true);
 		
 		return "myProfile";
@@ -360,7 +362,7 @@ public class HomeController {
 		model.addAttribute("orderList", user.getOrderList());
 		model.addAttribute("classActiveShipping", true);
 		model.addAttribute("listOfShippingAddresses", true);
-		
+		model.addAttribute("listOfCreditCards", true);
 		return "myProfile";
 	}
 	
@@ -471,6 +473,7 @@ public class HomeController {
 		model.addAttribute("orderList", user.getOrderList());
 		
 		model.addAttribute("classActiveShipping", true);
+		model.addAttribute("listOfCreditCards", true);
 		model.addAttribute("listOfShippingAddresses", true);
 					
 		return "myProfile";
@@ -526,6 +529,8 @@ public class HomeController {
 		model.addAttribute("updateSuccess", true);
 		model.addAttribute("user", currentUser);
 		model.addAttribute("classActiveEdit", true);
+		model.addAttribute("listOfCreditCards", true);		
+		model.addAttribute("listOfShippingAddresses", true);
 		
 		UserDetails userDetails = userDetailsService.loadUserByUsername(currentUser.getUsername());
 

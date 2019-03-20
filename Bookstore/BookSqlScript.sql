@@ -133,7 +133,6 @@ CREATE TABLE `payment` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `card_number` varchar(255) DEFAULT NULL,
   `cvc` int(11) NOT NULL,
-  `default_payment` bit(1) NOT NULL,
   `expiry_month` int(11) NOT NULL,
   `expiry_year` int(11) NOT NULL,
   `holder_name` varchar(255) DEFAULT NULL,
