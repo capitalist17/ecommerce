@@ -94,6 +94,16 @@ public class HomeController {
 		return "myAccount";
 	}
 	
+	@RequestMapping("/hours")
+	public String hours() {		
+		return "hours";
+	}
+	
+	@RequestMapping("/faq")
+	public String faq() {		
+		return "faq";
+	}
+	
 	@RequestMapping("/forgotPassword")
 	public String forgetPassword(
 				HttpServletRequest request,
